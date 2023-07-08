@@ -9,6 +9,19 @@ export async function getPrices(req, res) {
 	}
 }
 
+export async function getPriceByDate(req, res) {
+	try {
+		const price = await pricesService.getPriceByDate(req.params.date);
+		if (price) {
+			res.status(200).json(price);
+		} else {
+			res.status(404).send("Price not found");
+		}
+	} catch (error) {
+		res.status(500).send(error.message);
+	}
+}
+
 export async function getPrice(req, res) {
 	try {
 		const price = await pricesService.getPrice(req.params.id);

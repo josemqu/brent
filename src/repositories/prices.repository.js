@@ -11,6 +11,11 @@ class PricesRepository {
 		return price;
 	}
 
+	async getPriceByDate(date) {
+		const price = await pricesModel.findOne({ date: date });
+		return price;
+	}
+
 	async createPrice(price) {
 		const createdPrice = await pricesModel.create(price);
 		return createdPrice;

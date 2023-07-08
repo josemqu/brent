@@ -11,6 +11,11 @@ class PriceService {
 		return price;
 	}
 
+	async getPriceByDate(date) {
+		const price = await pricesRepository.getPriceByDate(date);
+		return price;
+	}
+
 	async createPrice(price) {
 		const createdPrice = await pricesRepository.createPrice(price);
 		return createdPrice;

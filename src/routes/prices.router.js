@@ -2,6 +2,7 @@ import { Router } from "express";
 import {
 	getPrices,
 	getPrice,
+	getPriceByDate,
 	createPrice,
 	updatePrice,
 	deletePrice,
@@ -11,6 +12,7 @@ const pricesRouter = Router();
 
 pricesRouter.get("/", getPrices);
 pricesRouter.get("/:id", getPrice);
+pricesRouter.get("/:date", getPriceByDate);
 pricesRouter.post("/", createPrice);
 pricesRouter.put("/:id", updatePrice);
 pricesRouter.delete("/:id", deletePrice);
