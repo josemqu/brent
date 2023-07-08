@@ -3,6 +3,7 @@ import {
 	getPrices,
 	getPrice,
 	getPriceByDate,
+	getScrapedPrice,
 	createPrice,
 	updatePrice,
 	deletePrice,
@@ -13,6 +14,7 @@ const pricesRouter = Router();
 pricesRouter.get("/", getPrices);
 pricesRouter.get("/:id", getPrice);
 pricesRouter.get("/:date", getPriceByDate);
+pricesRouter.get("/scraped/price/", getScrapedPrice);
 pricesRouter.post("/", createPrice);
 pricesRouter.put("/:id", updatePrice);
 pricesRouter.delete("/:id", deletePrice);

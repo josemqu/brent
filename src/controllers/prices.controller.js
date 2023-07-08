@@ -1,4 +1,4 @@
-import { pricesService } from "../services/index.js";
+import { pricesService, scraperService } from "../services/index.js";
 
 export async function getPrices(req, res) {
 	try {
@@ -15,7 +15,20 @@ export async function getPriceByDate(req, res) {
 		if (price) {
 			res.status(200).json(price);
 		} else {
-			res.status(404).send("Price not found");
+			res.status(404).send("Price not found 1");
+		}
+	} catch (error) {
+		res.status(500).send(error.message);
+	}
+}
+
+export async function getScrapedPrice(req, res) {
+	try {
+		const price = await scraperService.getScrapedPrice();
+		if (price) {
+			res.status(200).json(price);
+		} else {
+			res.status(404).send("Price not found 2");
 		}
 	} catch (error) {
 		res.status(500).send(error.message);
@@ -28,7 +41,7 @@ export async function getPrice(req, res) {
 		if (price) {
 			res.status(200).json(price);
 		} else {
-			res.status(404).send("Price not found");
+			res.status(404).send("Price not found 3");
 		}
 	} catch (error) {
 		res.status(500).send(error.message);
@@ -38,7 +51,9 @@ export async function getPrice(req, res) {
 export async function createPrice(req, res) {
 	try {
 		const price = await pricesService.createPrice(req.body);
-		res.status(201).json(price);
+		res
+			.status(201)
+			.send({ result: "Price created successfully", payload: price });
 	} catch (error) {
 		res.status(500).send(error.message);
 	}

@@ -1,11 +1,10 @@
 import { Router } from "express";
-import usersRouter from "./prices.router.js";
+import pricesRouter from "./prices.router.js";
 
 const routerAPI = (app) => {
 	const router = Router();
 	app.use("/api/v1", router);
-
-	router.use("/prices", usersRouter);
+	router.use("/prices", pricesRouter);
 };
 
 export default routerAPI;
