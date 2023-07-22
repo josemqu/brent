@@ -14,14 +14,15 @@
 	--M-color: #16172b;
 	--N-color: #ac0006;
 	--O-color: #d7d7d7;
-	--P-color: #090909;
+	--P-color: #444;
 }
 
 * {
 	margin: 0;
 	padding: 0;
 	box-sizing: border-box;
-	font-family: "Roboto", "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
+	font-family: "Quicksand", sans-serif;
+	/* , "Roboto", "Segoe UI", Tahoma, Geneva, Verdana; */
 }
 
 /* set a max width container */
@@ -31,60 +32,80 @@
 }
 
 .main-title {
-	color: var(--A-color);
+	margin: 2rem 0;
+	color: #009879;
 	margin-bottom: 2rem;
-}
-
-body {
-	background-color: var(--M-color);
-	color: var(--E-color);
-}
-
-/* style a nice table with headers and alternate row colors */
-table {
-	border-collapse: collapse;
 	width: 100%;
-}
-
-th {
-	background-color: var(--J-color);
-	color: var(--E-color);
-}
-
-th,
-td {
-	text-align: left;
-	padding: 8px;
-}
-
-tr:nth-child(even) {
-	background-color: var(--D-color);
-}
-
-tr:nth-child(odd) {
-	background-color: var(--P-color);
-}
-
-tr:hover {
-	background-color: var(--K-color);
-}
-
-/* style the header with a grey background and some padding */
-.header {
-	background-color: var(--D-color);
-	padding: 30px;
-	text-align: center;
-}
-h1 {
-	color: var(--A-color);
-}
-
-/* transparent table inner solid borders */
-table {
-	border-collapse: collapse;
-	border-spacing: 0;
+	font-weight: bold;
+	border-bottom: var(--O-color) solid 2px;
 }
 
 .prices-container {
+	display: flex;
+	flex-direction: column;
+	justify-content: space-between;
+	align-items: center;
 	margin: 2rem;
+}
+
+/* style a nice table with headers and alternate row colors */
+
+.content-table {
+	border-collapse: collapse;
+	margin: 25px 0;
+	font-size: 0.9em;
+	width: 100%;
+	min-width: 300px;
+	border-radius: 5px 5px 0 0;
+	overflow: hidden;
+	box-shadow: 0 0 20px rgba(0, 0, 0, 0.15);
+}
+
+.content-table thead tr {
+	background-color: #009879;
+	color: #ffffff;
+	text-align: left;
+	font-weight: bold;
+}
+
+.content-table thead th:last-of-type {
+	text-align: right;
+}
+
+.content-table th,
+.content-table td {
+	flex: content;
+	padding: 12px 15px;
+	font-weight: bold;
+	/* no warp text with 3 dots*/
+	overflow: hidden;
+	text-overflow: ellipsis;
+	white-space: nowrap;
+}
+
+.content-table th:first-of-type {
+	width: 62%;
+}
+
+.content-table td:last-of-type {
+	text-align: right;
+}
+
+.content-table tbody tr {
+	color: var(--P-color);
+	border-bottom: 1px solid #dddddd;
+}
+
+.content-table tbody tr:nth-of-type(even) {
+	background-color: #f3f3f3;
+}
+
+.content-table tbody tr:last-of-type {
+	border-bottom: 2px solid #009879;
+}
+
+.content-table tbody tr:hover {
+	font-weight: bold;
+	color: #009879;
+	cursor: pointer;
 }
