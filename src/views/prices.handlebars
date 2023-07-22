@@ -11,15 +11,27 @@
 			<table class="content-table">
 				<thead>
 					<tr>
-						<th>Date</th>
-						<th>Settle Price</th>
+						<th class="date">Date</th>
+						<th class="price">Settle</th>
+						<th class="options"> Options </th>
 					</tr>
 				</thead>
 				<tbody>
 					{{#each prices}}
 						<tr>
-							<td>{{this.date}}</td>
-							<td>{{this.settle}}</td>
+							<td class="date">{{this.date}}</td>
+							<td class="price">{{this.settle}}</td>
+							<td class="options">
+								{{! > font awesome icon }}
+								<i
+									class="fas fa-trash-alt"
+									onclick="deletePrice('{{this._id}}')"
+								></i>
+								<i
+									class="fas fa-edit"
+									onclick="updatePrice('{{this._id}}')"
+								></i>
+							</td>
 						</tr>
 					{{/each}}
 				</tbody>

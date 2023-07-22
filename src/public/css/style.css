@@ -68,8 +68,14 @@
 	font-weight: bold;
 }
 
-.content-table thead th:last-of-type {
+.content-table thead th.price,
+.content-table td.price {
 	text-align: right;
+}
+
+.content-table thead th.options,
+.content-table td.options {
+	text-align: center;
 }
 
 .content-table th,
@@ -87,10 +93,6 @@
 	width: 62%;
 }
 
-.content-table td:last-of-type {
-	text-align: right;
-}
-
 .content-table tbody tr {
 	color: var(--P-color);
 	border-bottom: 1px solid #dddddd;
@@ -104,8 +106,19 @@
 	border-bottom: 2px solid #009879;
 }
 
-.content-table tbody tr:hover {
+.content-table tbody tr:hover > .date,
+.content-table tbody tr:hover > .price {
 	font-weight: bold;
 	color: #009879;
+	/* cursor: pointer; */
+}
+
+.fa-trash-alt:hover {
+	color: var(--N-color);
+	cursor: pointer;
+}
+
+.fa-edit:hover {
+	color: var(--E-color);
 	cursor: pointer;
 }
