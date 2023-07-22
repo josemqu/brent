@@ -1,0 +1,23 @@
+:root {
+	--A-color: #00629b;
+	--B-color: #00843d;
+	--C-color: #64a70b;
+	--D-color: #63666a;
+	--E-color: #69b3e7;
+	--F-color: #93328e;
+	--G-color: #ea7600;
+	--H-color: #f1c400;
+	--I-color: #8e8c13;
+	--J-color: #003c71;
+	--K-color: #5d2a2c;
+	--L-color: #59315f;
+	--M-color: #16172b;
+	--N-color: #ac0006;
+}
+
+* {
+	margin: 0;
+	padding: 0;
+	box-sizing: border-box;
+	font-family: "Roboto", "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
+}

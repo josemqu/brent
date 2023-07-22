@@ -4,7 +4,7 @@ import mongoosePaginate from "mongoose-paginate-v2";
 const pricesCollection = "prices";
 
 const pricesSchema = new mongoose.Schema({
-	value: {
+	settle: {
 		type: Number,
 		required: true,
 	},

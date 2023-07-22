@@ -1,0 +1,29 @@
+<html lang="en">
+	<head>
+		<meta charset="UTF-8" />
+		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+		<title>Brent Prices Data</title>
+	</head>
+	<body>
+
+		<h1>Brent Prices Data</h1>
+
+		<table>
+			<thead>
+				<tr>
+					<th>Date</th>
+					<th>Settle Price</th>
+				</tr>
+			</thead>
+			<tbody>
+				{{#each prices}}
+					<tr>
+						<td>{{this.date}}</td>
+						<td>{{this.settle}}</td>
+					</tr>
+				{{/each}}
+			</tbody>
+		</table>
+
+	</body>
+</html>
