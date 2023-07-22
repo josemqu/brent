@@ -52,7 +52,7 @@ class ScraperService {
 
 	async getScrapedPrice() {
 		const price = await getPrice(this.url);
-		console.log(price);
+		// console.log(price);
 		return price;
 	}
 }

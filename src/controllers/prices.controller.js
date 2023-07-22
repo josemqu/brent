@@ -53,9 +53,11 @@ export async function createPrice(req, res) {
 		const price = await pricesService.createPrice(req.body);
 		res
 			.status(201)
-			.send({ result: "Price created successfully", payload: price });
+			.send({ ok: true, result: "Price created successfully", payload: price });
 	} catch (error) {
-		res.status(500).send(error.message);
+		res
+			.status(500)
+			.send({ ok: false, result: "Price not created", message: error.message });
 	}
 }
 

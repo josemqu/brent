@@ -25,19 +25,42 @@
 	/* , "Roboto", "Segoe UI", Tahoma, Geneva, Verdana; */
 }
 
+#custom-target {
+	position: fixed;
+	width: 100vw;
+	height: 100vh;
+	pointer-events: none;
+	z-index: 5000;
+}
+
 /* set a max width container */
 .container {
 	max-width: 800px;
 	margin: 0 auto;
 }
 
-.main-title {
-	margin: 2rem 0;
-	color: #009879;
+.header {
+	display: flex;
+	justify-content: space-between;
+	align-items: center;
+	width: 100%;
+	border-bottom: var(--O-color) solid 2px;
 	margin-bottom: 2rem;
+	color: #009879;
+}
+
+.main-title {
 	width: 100%;
 	font-weight: bold;
-	border-bottom: var(--O-color) solid 2px;
+}
+
+.run-scraping {
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	font-size: 1.5rem;
+	margin-right: 0.2rem;
+	cursor: pointer;
 }
 
 .prices-container {
