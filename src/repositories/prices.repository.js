@@ -2,7 +2,7 @@ import { pricesModel } from "../models/prices.model.js";
 
 class PricesRepository {
 	async getPrices() {
-		const prices = await pricesModel.find();
+		const prices = await pricesModel.find().lean();
 		return prices;
 	}
 

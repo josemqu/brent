@@ -13,6 +13,8 @@
 	--L-color: #59315f;
 	--M-color: #16172b;
 	--N-color: #ac0006;
+	--O-color: #d7d7d7;
+	--P-color: #090909;
 }
 
 * {
@@ -20,4 +22,69 @@
 	padding: 0;
 	box-sizing: border-box;
 	font-family: "Roboto", "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
+}
+
+/* set a max width container */
+.container {
+	max-width: 1200px;
+	margin: 0 auto;
+}
+
+.main-title {
+	color: var(--A-color);
+	margin-bottom: 2rem;
+}
+
+body {
+	background-color: var(--M-color);
+	color: var(--E-color);
+}
+
+/* style a nice table with headers and alternate row colors */
+table {
+	border-collapse: collapse;
+	width: 100%;
+}
+
+th {
+	background-color: var(--J-color);
+	color: var(--E-color);
+}
+
+th,
+td {
+	text-align: left;
+	padding: 8px;
+}
+
+tr:nth-child(even) {
+	background-color: var(--D-color);
+}
+
+tr:nth-child(odd) {
+	background-color: var(--P-color);
+}
+
+tr:hover {
+	background-color: var(--K-color);
+}
+
+/* style the header with a grey background and some padding */
+.header {
+	background-color: var(--D-color);
+	padding: 30px;
+	text-align: center;
+}
+h1 {
+	color: var(--A-color);
+}
+
+/* transparent table inner solid borders */
+table {
+	border-collapse: collapse;
+	border-spacing: 0;
+}
+
+.prices-container {
+	margin: 2rem;
 }

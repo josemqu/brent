@@ -6,6 +6,7 @@ import __dirname from "./utils.js";
 import config from "./config/config.js";
 import cors from "./middlewares/cors.js";
 import handlebars from "express-handlebars";
+import morgan from "morgan";
 
 // Initialization
 const { DB_USER, DB_PASS, DB_NAME, DB_URL, SESSION_SECRET } = config;
@@ -34,6 +35,7 @@ app.use(
 app.use(express.urlencoded({ extended: true }));
 app.use("/", express.static(`${__dirname}/public`));
 app.use(cors);
+app.use(morgan("dev"));
 
 // Database connection
 database.connect();

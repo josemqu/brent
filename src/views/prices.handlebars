@@ -5,25 +5,27 @@
 		<title>Brent Prices Data</title>
 	</head>
 	<body>
+		<div class="prices-container">
 
-		<h1>Brent Prices Data</h1>
-
-		<table>
-			<thead>
-				<tr>
-					<th>Date</th>
-					<th>Settle Price</th>
-				</tr>
-			</thead>
-			<tbody>
-				{{#each prices}}
+			<h1 class="main-title">Brent Prices Data</h1>
+			<table>
+				<thead>
 					<tr>
-						<td>{{this.date}}</td>
-						<td>{{this.settle}}</td>
+						<th>Date</th>
+						<th>Settle Price</th>
 					</tr>
-				{{/each}}
-			</tbody>
-		</table>
+				</thead>
+				<tbody>
+					{{#each prices}}
+						<tr>
+							<td>{{this.date}}</td>
+							<td>{{this.settle}}</td>
+						</tr>
+					{{/each}}
+				</tbody>
+			</table>
+		</div>
 
 	</body>
+	<script src="/js/prices.js"></script>
 </html>

@@ -3,9 +3,9 @@ import { pricesService, scraperService } from "../services/index.js";
 export async function getPrices(req, res) {
 	try {
 		const prices = await pricesService.getPrices();
-		res.status(200).json(prices);
+		return res.status(200).json(prices);
 	} catch (error) {
-		res.status(500).send(error.message);
+		return res.status(500).send(error.message);
 	}
 }
 
