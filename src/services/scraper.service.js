@@ -1,10 +1,10 @@
-import * as cheerio from "cheerio";
-import axios from "axios";
-import * as fs from "fs";
 import puppeteer from "puppeteer";
 
 const url =
 	"https://www.cmegroup.com/markets/energy/crude-oil/brent-crude-oil-last-day.settlements.html";
+
+const dataTypeSelectorText =
+	"#productTabData > div > div > div > div > div > div:nth-child(2) > div > div > div > div > div > div:nth-child(6) > div > div > h4";
 
 const dateSelectorText =
 	"#productTabData > div > div > div > div > div > div:nth-child(2) > div > div > div > div > div > div.trade-date-row.row > div > div > div > button > span";
@@ -23,22 +23,26 @@ async function getInnerText(url, selector) {
 	await page.setViewport({ width: 1080, height: 1024 });
 
 	// Locate the date and price selectors
+	const dataTypeSelector = await page.waitForSelector(dataTypeSelectorText);
 	const dateSelector = await page.waitForSelector(dateSelectorText);
 	const priceSelector = await page.waitForSelector(priceSelectorText);
 
 	// Get content of date and price selectors
+	const dataTypeContent = await dataTypeSelector?.evaluate(
+		(el) => el.textContent
+	);
 	const dateContent = await dateSelector?.evaluate((el) => el.textContent);
 	const priceContent = await priceSelector?.evaluate((el) => el.textContent);
-
-	// Print full date and price
-	console.log("The date of this blog post is %s.", dateContent);
-	console.log("The price of this blog post is %s.", priceContent);
 
 	// Close the browser
 	await browser.close();
 
 	// Return full response
-	return { date: dateContent, price: priceContent };
+	return {
+		dataType: dataTypeContent,
+		date: new Date(dateContent),
+		price: Number(priceContent),
+	};
 }
 
 class ScraperService {
@@ -49,15 +53,8 @@ class ScraperService {
 	}
 
 	async getScrapedPrice() {
-		const data = await getInnerText(this.url, this.selector);
-
-		const price = {
-			date: new Date(data.date),
-			price: Number(data.price),
-		};
-
+		const price = await getInnerText(this.url, this.selector);
 		console.log(price);
-
 		return price;
 	}
 }
