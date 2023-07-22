@@ -9,10 +9,10 @@ const dataTypeSelectorText =
 const dateSelectorText =
 	"#productTabData > div > div > div > div > div > div:nth-child(2) > div > div > div > div > div > div.trade-date-row.row > div > div > div > button > span";
 
-const priceSelectorText =
+const settleSelectorText =
 	"#productTabData > div > div > div > div > div > div:nth-child(2) > div > div > div > div > div > div:nth-child(8) > div > div > div > div > table > tbody > tr:nth-child(1) > td:nth-child(7)";
 
-async function getInnerText(url, selector) {
+async function getPrice(url) {
 	// Launch the browser and open a new blank page
 	const browser = await puppeteer.launch({
 		headless: "new",
@@ -22,17 +22,17 @@ async function getInnerText(url, selector) {
 	await page.goto(url);
 	await page.setViewport({ width: 1080, height: 1024 });
 
-	// Locate the date and price selectors
+	// Locate the selectors
 	const dataTypeSelector = await page.waitForSelector(dataTypeSelectorText);
 	const dateSelector = await page.waitForSelector(dateSelectorText);
-	const priceSelector = await page.waitForSelector(priceSelectorText);
+	const settleSelector = await page.waitForSelector(settleSelectorText);
 
-	// Get content of date and price selectors
+	// Get content of selectors
 	const dataTypeContent = await dataTypeSelector?.evaluate(
 		(el) => el.textContent
 	);
 	const dateContent = await dateSelector?.evaluate((el) => el.textContent);
-	const priceContent = await priceSelector?.evaluate((el) => el.textContent);
+	const settleContent = await settleSelector?.evaluate((el) => el.textContent);
 
 	// Close the browser
 	await browser.close();
@@ -41,19 +41,17 @@ async function getInnerText(url, selector) {
 	return {
 		dataType: dataTypeContent,
 		date: new Date(dateContent),
-		price: Number(priceContent),
+		settle: Number(settleContent),
 	};
 }
 
 class ScraperService {
 	constructor() {
 		this.url = url;
-		this.priceSelector = priceSelectorText;
-		this.dateSelector = dateSelectorText;
 	}
 
 	async getScrapedPrice() {
-		const price = await getInnerText(this.url, this.selector);
+		const price = await getPrice(this.url);
 		console.log(price);
 		return price;
 	}
