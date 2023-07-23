@@ -16,6 +16,25 @@ const showAlert = (icon, title, text = false) => {
 	});
 };
 
+const showInput = () => {
+	return Swal.fire({
+		title: "Enter a price",
+		input: "number",
+		inputAttributes: {
+			step: 0.01,
+		},
+		showCancelButton: true,
+		confirmButtonText: "Submit",
+		showLoaderOnConfirm: true,
+		preConfirm: (price) => {
+			if (price <= 0) {
+				Swal.showValidationMessage("Price must be greater than 0");
+			}
+			return price;
+		},
+	});
+};
+
 const animateCSS = (element, animation, prefix = "animate__") =>
 	// We create a Promise and return it
 	new Promise((resolve, reject) => {

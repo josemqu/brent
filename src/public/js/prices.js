@@ -3,7 +3,6 @@ console.log("prices.js");
 const runScrapingBtn = document.querySelector(".run-scraping");
 
 runScrapingBtn.addEventListener("click", () => {
-	console.log("click");
 	fetch("http://localhost:8080/api/v1/prices/scraped/price/").then((res) => {
 		res
 			.json()
@@ -41,7 +40,6 @@ const createPrice = async (price) => {
 };
 
 const deletePrice = (id) => {
-	console.log("deletePrice");
 	fetch(`http://localhost:8080/api/v1/prices/${id}`, {
 		method: "DELETE",
 	}).then((res) => {
@@ -65,18 +63,12 @@ const deletePrice = (id) => {
 };
 
 const updatePrice = (id) => {
-	// open a form in a modal
-	const modal = document.querySelector(".modal");
-	modal.classList.add("show-modal");
-	const form = document.querySelector(".modal-form");
-	form.addEventListener("submit", (e) => {
-		e.preventDefault();
-		const formData = new FormData(form);
-		const data = Object.fromEntries(formData);
-		console.log(data);
+	// show input
+	showInput().then((price) => {
+		// update price
 		fetch(`http://localhost:8080/api/v1/prices/${id}`, {
 			method: "PUT",
-			body: JSON.stringify(data),
+			body: JSON.stringify({ settle: price.value }),
 			headers: {
 				"Content-Type": "application/json",
 			},
