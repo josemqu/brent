@@ -14,13 +14,15 @@ runScrapingBtn.addEventListener("click", () => {
 			})
 			.then((res) => {
 				if (res.ok) {
-					showAlert(res.result, "success").then((window.location.href = "/"));
+					showAlert("success", res.result).then(
+						setTimeout(() => (window.location.href = "/"), 3500)
+					);
 				} else {
-					showAlert(res.result, "error");
+					showAlert("error", res.result, res.message);
 				}
 			})
 			.catch((err) => {
-				showAlert(err.result, "error");
+				showAlert("error", err.result);
 				console.log(err);
 			});
 	});
@@ -48,14 +50,53 @@ const deletePrice = (id) => {
 			.then((data) => {
 				console.log(data);
 				if (data.ok) {
-					showAlert(data.result, "success").then((window.location.href = "/"));
+					showAlert("success", data.result).then(
+						setTimeout(() => (window.location.href = "/"), 3500)
+					);
 				} else {
-					showAlert(data.result, "error");
+					showAlert("error", data.result, res.message);
 				}
 			})
 			.catch((err) => {
-				showAlert(err.result, "error");
+				showAlert("error", err.result, res.message);
 				console.log(err);
 			});
+	});
+};
+
+const updatePrice = (id) => {
+	// open a form in a modal
+	const modal = document.querySelector(".modal");
+	modal.classList.add("show-modal");
+	const form = document.querySelector(".modal-form");
+	form.addEventListener("submit", (e) => {
+		e.preventDefault();
+		const formData = new FormData(form);
+		const data = Object.fromEntries(formData);
+		console.log(data);
+		fetch(`http://localhost:8080/api/v1/prices/${id}`, {
+			method: "PUT",
+			body: JSON.stringify(data),
+			headers: {
+				"Content-Type": "application/json",
+			},
+		}).then((res) => {
+			res
+				.json()
+				.then((data) => {
+					console.log(data);
+					if (data.ok) {
+						showAlert("success", data.result).then(
+							setTimeout(() => (window.location.href = "/"), 3500)
+						);
+					} else {
+						showAlert("error", data.result, res.message);
+					}
+				})
+				.catch((err) => {
+					showAlert("error", err.result, res.message);
+					console.log(err);
+				});
+		});
 	});
 };

@@ -1,8 +1,9 @@
 console.log("index.js");
 
-const showAlert = (message, icon) => {
+const showAlert = (icon, title, text = false) => {
 	return Swal.fire({
-		html: message,
+		title: `<strong>${title}</strong>`,
+		text: text,
 		target: "#custom-target",
 		customClass: {
 			container: "position-absolute",
@@ -10,7 +11,7 @@ const showAlert = (message, icon) => {
 		toast: true,
 		position: "bottom-right",
 		showConfirmButton: false,
-		timer: 1500,
+		timer: 3500,
 		icon: icon,
 	});
 };
