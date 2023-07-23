@@ -1,7 +1,7 @@
 console.log("index.js");
 
 const showAlert = (message, icon) => {
-	Swal.fire({
+	return Swal.fire({
 		html: message,
 		target: "#custom-target",
 		customClass: {

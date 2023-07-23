@@ -73,8 +73,12 @@ export async function updatePrice(req, res) {
 export async function deletePrice(req, res) {
 	try {
 		const price = await pricesService.deletePrice(req.params.id);
-		res.status(200).json(price);
+		res
+			.status(200)
+			.json({ ok: true, result: "Price deleted successfully", payload: price });
 	} catch (error) {
-		res.status(500).send(error.message);
+		res
+			.status(500)
+			.send({ ok: false, result: "Price not deleted", message: error.message });
 	}
 }
