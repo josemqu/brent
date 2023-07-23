@@ -10,7 +10,7 @@
 			<div class="header">
 				<h1 class="main-title">Brent Prices</h1>
 				<div class="run-scraping">
-					<i class="fas fa-sync-alt"></i>
+					<i class="fas fa-sync-alt" onclick="runScraping()"></i>
 				</div>
 			</div>
 			<table class="content-table">
@@ -29,12 +29,12 @@
 							<td class="options">
 								{{! > font awesome icon }}
 								<i
-									class="fas fa-trash-alt"
-									onclick="deletePrice('{{this._id}}')"
-								></i>
-								<i
 									class="fas fa-edit"
 									onclick="updatePrice('{{this._id}}')"
+								></i>
+								<i
+									class="fas fa-trash-alt"
+									onclick="deletePrice('{{this._id}}')"
 								></i>
 							</td>
 						</tr>
