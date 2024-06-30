@@ -1,48 +1,48 @@
 <html lang="en">
-	<head>
-		<meta charset="UTF-8" />
-		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
-		<title>Brent Prices Data</title>
-	</head>
-	<body>
-		<div class="prices-container">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Brent Prices Data</title>
+  </head>
+  <body>
+    <div class="prices-container">
 
-			<div class="header">
-				<h1 class="main-title">Brent Prices</h1>
-				<div class="run-scraping">
-					<i class="fas fa-sync-alt" onclick="runScraping()"></i>
-				</div>
-			</div>
-			<table class="content-table">
-				<thead>
-					<tr>
-						<th class="date">Date</th>
-						<th class="price">Settle</th>
-						<th class="options"> Options </th>
-					</tr>
-				</thead>
-				<tbody>
-					{{#each prices}}
-						<tr id="{{this._id}}">
-							<td class="date">{{this.date}}</td>
-							<td class="price">{{this.settle}}</td>
-							<td class="options">
-								{{! > font awesome icon }}
-								<i
-									class="fas fa-edit"
-									onclick="updatePrice('{{this._id}}')"
-								></i>
-								<i
-									class="fas fa-trash-alt"
-									onclick="deletePrice('{{this._id}}')"
-								></i>
-							</td>
-						</tr>
-					{{/each}}
-				</tbody>
-			</table>
-		</div>
+      <div class="header">
+        <h1 class="main-title">Brent Prices</h1>
+        <div class="run-scraping">
+          <i class="fas fa-sync-alt" onclick="runScraping()"></i>
+        </div>
+      </div>
+      <table class="content-table">
+        <thead>
+          <tr>
+            <th class="date">Date</th>
+            <th class="price">Settle</th>
+            <th class="options"> Options </th>
+          </tr>
+        </thead>
+        <tbody>
+          {{#each prices}}
+            <tr id="{{this._id}}">
+              <td class="date">{{this.date}}</td>
+              <td class="price">{{this.settle}}</td>
+              <td class="options">
+                {{! > font awesome icon }}
+                <i
+                  class="fas fa-edit"
+                  onclick="updatePrice('{{this._id}}')"
+                ></i>
+                <i
+                  class="fas fa-trash-alt"
+                  onclick="deletePrice('{{this._id}}')"
+                ></i>
+              </td>
+            </tr>
+          {{/each}}
+        </tbody>
+      </table>
+    </div>
 
-	</body>
-	<script src="/js/prices.js" defer></script>
+  </body>
+  <script src="/js/prices.js" defer></script>
 </html>
