@@ -1,7 +1,7 @@
 console.log("prices.js");
 
 const runScraping = () => {
-  fetch("http://localhost:8080/api/v1/prices/scraped/price/").then((res) => {
+  fetch("/api/v1/prices/scraped/price/").then((res) => {
     res
       .json()
       .then((data) => {
@@ -34,7 +34,7 @@ const runScraping = () => {
 };
 
 const createPrice = async (price) => {
-  const response = await fetch("http://localhost:8080/api/v1/prices", {
+  const response = await fetch("/api/v1/prices", {
     method: "POST",
     body: JSON.stringify(price),
     headers: {
@@ -46,7 +46,7 @@ const createPrice = async (price) => {
 };
 
 const deletePrice = (id) => {
-  fetch(`http://localhost:8080/api/v1/prices/${id}`, {
+  fetch(`/api/v1/prices/${id}`, {
     method: "DELETE",
   }).then((res) => {
     res
@@ -72,7 +72,7 @@ const updatePrice = (id) => {
   // show input
   showInput().then((price) => {
     // update price
-    fetch(`http://localhost:8080/api/v1/prices/${id}`, {
+    fetch(`/api/v1/prices/${id}`, {
       method: "PUT",
       body: JSON.stringify({ settle: price.value }),
       headers: {
