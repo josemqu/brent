@@ -1,37 +1,24 @@
 console.log("prices.js");
 
-const runScraping = () => {
-  fetch("/api/v1/prices/scraped/price/").then((res) => {
-    res
-      .json()
-      .then((data) => {
-        console.log(data);
-        // if (data.dataType === "Final Data") {
-        const response = createPrice(data);
-        return response;
-        // } else {
-        // 	const errorMsg = {
-        // 		result: "Price not created",
-        // 		message: "The price is not final",
-        // 	};
-        // 	throw new Error(JSON.stringify(errorMsg));
-        // }
-      })
-      .then((res) => {
-        if (res.ok) {
-          showAlert("success", res.result).then(
-            setTimeout(() => (window.location.href = "/"), 3500)
-          );
-        } else {
-          showAlert("error", res.result, res.message);
-        }
-      })
-      .catch((err) => {
-        const errorMsg = JSON.parse(err.message);
-        console.log(errorMsg);
-        showAlert("error", errorMsg.result, errorMsg.message);
-      });
+const runScraping = async () => {
+  const response = await fetch("/api/v1/prices/scraped/price/", {
+    method: "GET",
+    headers: {
+      "Content-Type": "application/json",
+    },
   });
+  const data = await response.json();
+
+  const result = await createPrice(data);
+  console.log(result);
+
+  if (result.ok) {
+    showAlert("success", result.result).then(
+      setTimeout(() => (window.location.href = "/"), 3500)
+    );
+  } else {
+    showAlert("error", result.result);
+  }
 };
 
 const createPrice = async (price) => {
