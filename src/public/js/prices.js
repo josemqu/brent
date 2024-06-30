@@ -28,6 +28,7 @@ const runScraping = () => {
       })
       .catch((err) => {
         const errorMsg = JSON.parse(err.message);
+        console.log(errorMsg);
         showAlert("error", errorMsg.result, errorMsg.message);
       });
   });
