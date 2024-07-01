@@ -14,7 +14,7 @@ const runScraping = async () => {
 
   if (result.ok) {
     showAlert("success", result.result).then(
-      setTimeout(() => (window.location.href = "/"), 3500)
+      setTimeout(() => (window.location.href = "/"), 2000)
     );
   } else {
     showAlert("error", result.result);
@@ -43,7 +43,7 @@ const deletePrice = (id) => {
         console.log(data);
         if (data.ok) {
           showAlert("success", data.result).then(
-            setTimeout(() => (window.location.href = "/"), 3500)
+            setTimeout(() => (window.location.href = "/"), 2000)
           );
         } else {
           showAlert("error", data.result, res.message);
@@ -73,7 +73,7 @@ const updatePrice = (id) => {
           console.log(data);
           if (data.ok) {
             showAlert("success", data.result).then(
-              setTimeout(() => (window.location.href = "/"), 3500)
+              setTimeout(() => (window.location.href = "/"), 2000)
             );
           } else {
             showAlert("error", data.result, res.message);
