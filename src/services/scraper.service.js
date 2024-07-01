@@ -19,10 +19,10 @@ async function getPrice(url) {
   });
 
   const ua =
-    "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/69.0.3497.100 Safari/537.36";
+    "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/126.0.6478.126 Safari/537.36";
 
   const page = await browser.newPage();
-  page.setUserAgent();
+  page.setUserAgent(ua);
   await page.goto(url, { waitUntil: "domcontentloaded" });
   await page.setViewport({ width: 1080, height: 1024 });
 
